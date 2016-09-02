@@ -1,0 +1,44 @@
+1、发布命令：fis3 release -d ../xxx-build
+
+2、fis-conf.js
+
+ fis.match('*', {
+   useHash: true,//是否启用文件md5后缀戳
+   domain:'http://ngcdn.letwx.com/app/xxx-build' // 指定cdn域名
+});
+fis.match('*.html',{
+    //npm install -g fis-optimizer-htmlmin
+    optimizer:fis.plugin('htmlmin',{  //压缩html
+        html: "htmlmin"
+    }),
+    useHash:false //html文件不启用md5
+});
+
+fis.match('*.js', {
+    // fis-optimizer-uglify-js 插件进行压缩，已内置
+    optimizer: fis.plugin('uglify-js'),
+	useHash:true
+});
+
+
+fis.match('*.css', {
+    // fis-optimizer-clean-css 插件进行压缩，已内置
+    optimizer: fis.plugin('clean-css'),
+	useHash:true,
+    postprocessor : fis.plugin('autoprefixer', {
+        //npm install -g fis-postprocessor-autoprefixer
+        // detail config (https://github.com/postcss/autoprefixer#browsers)
+        "browsers": ["Android >= 2.3", "ChromeAndroid > 1%", "iOS >= 4"],
+        "cascade": true
+    })
+});
+fis.match('::image', {
+    // fis-optimizer-png-compressor 插件进行压缩，已内置
+    //optimizer: fis.plugin('png-compressor'),
+	useHash:true
+});
+
+3.插件安装的命令
+FIS3插件安装：
+css自动补全插件：npm install -g fis-postprocessor-autoprefixer --registry=http://r.cnpmjs.org
+html压缩插件：npm install -g fis-optimizer-htmlmin --registry=http://r.cnpmjs.org

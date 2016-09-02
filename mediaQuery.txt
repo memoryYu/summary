@@ -1,0 +1,28 @@
+/*iphone4*/
+@media only screen and (min-width: 320px) and (min-height: 416px){
+
+}
+/*iphone5*/
+@media only screen and (min-width: 320px) and (min-height: 504px){
+
+}
+/*HM note*/
+@media only screen and (min-width: 360px) and (min-height: 567px){
+
+}
+/*iphone6*/
+@media only screen and (min-width: 375px) and (min-height: 603px){
+
+}
+/*mzπ¨*/
+@media only screen and (min-width: 393px) and (min-height: 581px){
+
+}
+/*iphone6 pluse*/
+@media only screen and (min-width: 414px) and (min-height: 672px){
+
+}
+/*mz ¡ı*/
+@media only screen and (min-width: 432px) and (min-height: 599px){
+
+}

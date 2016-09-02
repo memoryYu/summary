@@ -1,0 +1,19 @@
+1、在火山冻游戏中，进入游戏界面时，根据方格的行列数创建二维数组，随机赋值，即随机“放置地雷”，玩家每走一步判断此步是否可行，可行的话再判断是否踩雷，游戏有时间限制setTimeout，根据游戏结果显示页面。
+
+2、在做良品语音送祝福活动时，用到了很多微信的语音接口，startRecord、stopRecord、onVoiceRecordEnd、playVoice、uploadVoice等，因为微信语音只能保存3天，所以后台特别做了存储，在播放audio文件时发现，在ios上preoload属性并没有起到作用，需要用专门用load()来加载，pause()只是暂停，再次play()时还是从上次暂停的时间点开始，需要设置其currentTime为0。
+
+3、良品十周年中视频播放其实是一帧帧图片在canvas中切换，飞机的曲线轨迹是分别加上了x轴和y轴的动画，并结合不同的速度曲线……
+在canvas元素上播放视频的前期工作：
+需要下载ffmpeg和montage。
+（1）mp4->png
+ffmpeg -i myvideo.mp4 -vf scale=375:-1 -r 5 frames/%04d.png
+
+（2）png->jpg(合成一张大图)
+magick montage -border 0 -geometry 375x -tile 6x -quality 60% frames/*.png myvideo.jpg
+
+（3）mp4->mp3
+ffmpeg -i input.mp4 -ab 64 -ar 22050 output.mp3 
+（4）加载canvid.js并初始化
+这样折腾的原因是视频原本比较大，几十兆左右，转化为图片之后只有1M左右，在移动网络不稳定的环境下大小优化尤其重要，另一个原因是在ios中video不能自动播放。
+
+前端的坑不止这么多，让我们且行且珍惜。

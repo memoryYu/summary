@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>liveapp模板</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<!----base2.css和之前使用的base.css略有不同，使用时请注意---->
+    <link rel="stylesheet" href="css/base2.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/idangerous.swiper-2.7.5.css">
+    <script src="js/loading.js"></script>
+    <script src="js/img_preload.js"></script>
+	<!-- 不要忘了在类名后面加上后缀，图片的类名一般直接用图片的名称 -->
+</head>
+<body class="swiper-body-bg swiper-body">
+    <audio id="audio1" src="resource/wave4.mp3" preload style="display: none;width:0;height:0;"></audio>
+    <div class="swiper-device" id="main" style="display:none;">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+				<!--First Slide-->
+				<div class="swiper-slide">
+					<div class="swiper-bg bg1">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/f1.png" class="f1_1 bounceInUp_1" />
+							<img src="images/c1.png" class="c1_1 fadeInLeft_1" />
+						<!------------->						
+					 </div>
+				</div>
+				<!--Second Slide-->
+				<div class="swiper-slide">
+					<div class="swiper-bg bg2">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/f2.png" class="f2_2 bounceInDown_2" />							
+						<!------------->						
+					 </div>
+				</div>
+				<!--Third Slide-->
+                <div class="swiper-slide">
+					<div class="swiper-bg bg3">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/f3.png" class="f3_3 bounceInLeft_3" />
+						<!------------->						
+					 </div>
+				</div>
+				<!--fourth Slide-->
+                <div class="swiper-slide">
+					<div class="swiper-bg bg4">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/f4.png" class="f4_4 bounceInRight_4" />	
+						<!------------->						
+					 </div>
+				</div>
+				<!--Fifth Slide-->
+				<div class="swiper-slide">
+					<div class="swiper-bg bg5">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/f5.png" class="f5_5 fadeInUp_5 " />
+						<!------------->						
+					 </div>
+				</div>
+				<!--sixth Slide-->
+				<div class="swiper-slide">
+					<div class="swiper-bg bg6">						
+						<!-- Any HTML content of the first slide goes here -->
+							<img src="images/zhuti.png" class="zhuti_6 fadeInDown_6" />
+						<!------------->						
+					 </div>
+				</div>   
+            </div>
+        </div>
+    </div>
+    
+    <a href="#" class="copyRight">本网页技术支持由乐推微信互动提供</a>
+    <img src="images/jiantou.png" class="swiper-arrow swiper-scale"  id="arrow" onClick="mySwiper.swipeNext();" />
+
+    <div class="swiper-player-button " onClick="playAudio();" style="display:none"></div>
+<script src="js/jquery.min.js"></script>
+<script src="js/idangerous.swiper-2.7.5.min.js"></script>
+<script src="js/idangerous.swiper.progress.js"></script>
+<script>
+    window.onload = function(){
+		window.oAudio = document.getElementById('audio1');
+		oAudio.play();
+        M.loading(1,1);
+        
+        var imgs = [
+					"images/f4.png",
+					"images/Superman.jpg"                           
+                    ];//此处只需放入页面中容量较大的图片，小容量的图片不需要写入
+        
+        var loaded = 0;
+        for(var i = 0; i < imgs.length; i++){
+            imgReady(imgs[i],function(){},function(){
+                ++loaded;
+                if(loaded == imgs.length){
+                    M.loadingHide();
+					$("#main").show();
+					$(".swiper-player-button").show();
+					oAudio.play();
+                    swiper_func();
+                }
+            },function(){
+                alert("图片加载出错");
+            })
+        }
+        
+    }
+
+    function swiper_func(){
+        var mySwiper = new Swiper('.swiper-container',{
+            mode: 'vertical',
+            preventLinks:false,       
+            onSlideChangeStart:function(swiper){
+				//此处的数字要随着slide的多少而更改，若slide为n，那么此处的数字应为n-1
+                if(swiper.activeIndex == swiper.slides.length-1){
+                    $("#arrow").hide();
+                    $(".copyRight").addClass("bounceInUp");
+                }else{
+                    $("#arrow").show();
+                    $(".copyRight").removeClass("bounceInUp");
+                }
+            },
+
+            //Enable Smooth Progress Pluin:
+            progress:true,
+            //When plugin enabled it adds callback for swiper:
+            onProgressChange:function(swiper){
+            	
+            	//Pluin adds "progress" property to each slide and commom "progress" property for swiper
+            	for (var i = 0; i < swiper.slides.length; i++){
+            		
+          			var slide = swiper.slides[i];
+          			var progress = slide.progress;
+          			
+          			/*******Simple Translate-Z Modifier*******
+          			swiper.setTransform(slide,'translate3d(0px,0,'+(-Math.abs(progress*1500))+'px)');
+          			***************************************/
+          			
+          			/************Android-like Cover*********************/
+          			var scale,translate,opacity;
+          			if (progress<=0) {
+            			opacity = 1 - Math.min(Math.abs(progress),1);
+            			scale = 1 - Math.min(Math.abs(progress/2),1);
+            			translate = progress*swiper.width;  
+            			
+          			}
+          			else {
+            			opacity = 1 - Math.min(Math.abs(progress/2),1);
+            			scale=1;
+            			translate=0; 
+          			}
+          			slide.style.opacity = opacity;
+          			swiper.setTransform(slide,'translate3d(0,'+(translate)+'px,0) scale('+scale+')');
+          			
+          			
+          			/*****************Inverse Cover****************
+          			var translate, boxShadow;
+          			if (progress>0) {
+            			translate = progress*swiper.height;  
+            			boxShadowOpacity = 0;
+          			}
+          			else {
+            			translate=0; 
+            			boxShadowOpacity = 1  - Math.min(Math.abs(progress),1);
+          			}
+          			slide.style.boxShadow='0px 0px 10px rgba(0,0,0,'+boxShadowOpacity+')';
+          			swiper.setTransform(slide,'translate3d(0,'+(translate)+'px,0)');
+          			*********/
+          			
+          			/**************Slides Smooth Rotate***********
+          			var rotate = -90*progress;
+          			if (rotate<-90) rotate=-90;
+          			if (rotate>90) rotate=90;
+          			var translate = progress*swiper.height/2;  
+          			var opacity = 1 - Math.min(Math.abs(progress),1);
+          			slide.style.opacity = opacity;
+          			swiper.setTransform(slide,'rotateX('+rotate+'deg) translate3d(0,'+(translate)+'px,0)');
+          			*****/
+          			
+          			/*******************Fade Effect****************
+          			var translate = progress*swiper.height;  
+          			var opacity = 1 - Math.min(Math.abs(progress),1);
+          			slide.style.opacity = opacity;
+          			swiper.setTransform(slide,'translate3d(0,'+translate+'px,0)');
+          			***********/
+          			
+          			/**************slides Flip**********
+          			var rotate = -180*progress;
+          			if (rotate<-180) rotate=-180;
+          			if (rotate>180) rotate=180;
+          			var translate = progress*swiper.height;  
+          			var opacity = 1 - Math.min(Math.abs(progress),1);
+          			slide.style.opacity = opacity;
+          			swiper.setTransform(slide,'translate3d(0,'+translate+'px,'+'0)');
+          			swiper.setTransform(slide.querySelector('.swiper-bg'),'rotateX('+rotate+'deg)');
+          			****/
+        		}
+            },
+            onTouchStart:function(swiper){
+				if(!isPause)
+                oAudio.play();
+                for(var i = 0; i < swiper.slides.length; i++){
+                	swiper.setTransition(swiper.slides[i],0);
+                	swiper.setTransition(swiper.slides[i].querySelector('.swiper-bg'),0);
+                	
+                }
+            },
+            onSetWrapperTransition:function(swiper,speed){
+            	for (var i=0; i < swiper.slides.length; i++) {
+            		swiper.setTransition(swiper.slides[i],swiper.params.speed);
+            		swiper.setTransition(swiper.slides[i].querySelector('.swiper-bg'), speed);            	
+            	}
+            }       	
+        })
+        
+        //set Z-indexes
+        /**********Z-indexes of Android-like Cover******************/
+       	for (var i = 0; i < mySwiper.slides.length; i++){
+      		mySwiper.slides[i].style.zIndex = mySwiper.slides.length - i;
+    	}
+    	
+    	
+    	/**********Z-indexes of Inverse Cover***********
+       	for (var i = 0; i < mySwiper.slides.length; i++){
+      		mySwiper.slides[i].style.zIndex = i;
+    	}
+    	*******/
+    	
+    }
+    
+    var isPause=false;
+    function playAudio() {
+        $(".swiper-player-button").toggleClass("swiper-player-button-close");
+        if (window.HTMLAudioElement) {
+            try {
+                if(oAudio.paused){
+                    oAudio.play();
+                }else{
+                    oAudio.pause();
+					isPause = true;
+                }
+            }catch (e) {
+                if(window.console && console.error("Error:" + e));
+            }
+        }
+    }    
+</script>
+</body>
+</html>

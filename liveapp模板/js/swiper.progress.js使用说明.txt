@@ -1,0 +1,1 @@
+﻿idangerous.swiper.progress.js中包含了各种smooth progress的方法，即页面间平滑切换的方法，需要注意的是如果要使用此js那么swiper.js的版本必须在2.3以上

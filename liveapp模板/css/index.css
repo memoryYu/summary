@@ -1,0 +1,383 @@
+/* CSS Document */
+.bg1{
+	background:#9b85c3;
+	}
+.bg2{
+	background:#f2a95c;
+	}
+.bg3{
+	background:#fa9085;
+	}
+.bg4{
+	background:#afd84a;
+	}
+.bg5{
+	background:#ccc;
+	}
+.bg6{
+	background:#ea72a0;
+	}
+
+/******** slide 1 start ***************/
+.f1_1{
+	position:absolute;
+	top:20%;
+	left:10%;
+	width:70%;
+	height:auto;
+}
+.c1_1{
+	position: absolute;
+	top: 34%;
+	left: 40%;
+	width: 70%;
+	height: auto;
+	z-index: -1;
+}
+@-webkit-keyframes bounceInUp_1 {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 300px, 0);
+            transform: translate3d(0, 300px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+            transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+            transform: translate3d(0, -5px, 0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+.swiper-slide-active .bounceInUp_1 {
+    -webkit-animation: bounceInUp_1 0.75s;
+            animation: bounceInUp_1 0.75s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInLeft_1{
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(-100%,0,0);
+		transform:translate3d(-100%,0,0);
+  }
+  100%{
+opacity:1;
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+.swiper-slide-active .fadeInLeft_1{
+	-webkit-animation:fadeInLeft_1 1s ease-in-out;
+		animation:fadeInLeft_1 1s ease-in-out;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+/******** slide 1 end ***************/
+
+/******** slide 2 start ***************/
+.f2_2{
+	position:absolute;
+	top:20%;
+	left:10%;
+	width:70%;
+	height:auto;
+	}
+@-webkit-keyframes bounceInDown_2 {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -300px, 0);
+            transform: translate3d(0, -300px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+            transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+            transform: translate3d(0, 5px, 0);
+  }
+
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.swiper-slide-active .bounceInDown_2 {
+    -webkit-animation: bounceInDown_2 0.75s;
+            animation: bounceInDown_2 0.75s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInRight_2{
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(100%,0,0);
+		transform:translate3d(100%,0,0);
+  }
+  100%{
+opacity:1;
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+.swiper-slide-active .fadeInRight_2{
+	-webkit-animation:fadeInRight_2 1s ease-in-out;
+		animation:fadeInRight_2 1s ease-in-out;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+/******** slide 2 end ***************/
+
+/******** slide 3 start ***************/
+.f3_3{
+	position:absolute;
+	top:20%;
+	left:10%;
+	width:60%;
+	height:auto;
+	}
+@-webkit-keyframes bounceInLeft_3{
+  0%,100%,60%,75%,90%{
+	-webkit-transition-timing-function:cubic-bezier(0.215,.61,.355,1);
+		transition-timing-function:cubic-bezier(0.215,.61,.355,1);
+  }
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(-300px,0,0);
+		transform:translate3d(-300px,0,0);
+  }
+  60%{
+	opacity:1;
+	-webkit-transform:translate3d(25px,0,0);
+		transform:translate3d(25px,0,0);
+  }
+  75%{
+	-webkit-transform:translate3d(-10px,0,0);
+		transform:translate3d(-10px,0,0);
+  }
+  90%{
+	-webkit-transform:translate3d(5px,0,0);
+		transform:translate3d(5px,0,0);
+  }
+  100%{
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+
+.swiper-slide-active .bounceInLeft_3{
+	-webkit-animation:bounceInLeft_3 0.75s;
+		animation:bounceInLeft_3 0.75s;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+@-webkit-keyframes scaleBig_3{
+    0%{ 
+        opacity: 0;
+        -webkit-transform: scale(15.0);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: scale(1.0);
+    }
+}
+
+.swiper-slide-active .scaleBig_3{
+    -webkit-animation:scaleBig_3 0.75s;
+            animation:scaleBig_3 0.75s;
+    -webkit-animation-fill-mode:both;
+            animation-fill-mode:both;
+}
+/******** slide 3 end ***************/
+
+/******** slide 4 start ***************/
+.f4_4{
+	position:absolute;
+	top:20%;
+	right: 10%;
+	width:66%;
+	height:auto;
+	}
+@-webkit-keyframes bounceInRight_4{
+  0%,100%,60%,75%,90%{
+	-webkit-transition-timing-function:cubic-bezier(0.215,.61,.355,1);
+		transition-timing-function:cubic-bezier(0.215,.61,.355,1);
+  }
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(300px,0,0);
+		transform:translate3d(300px,0,0);
+  }
+  60%{
+	opacity:1;
+	-webkit-transform:translate3d(-25px,0,0);
+		transform:translate3d(-25px,0,0);
+  }
+  75%{
+	-webkit-transform:translate3d(10px,0,0);
+		transform:translate3d(10px,0,0);
+  }
+  90%{
+	-webkit-transform:translate3d(-5px,0,0);
+		transform:translate3d(-5px,0,0);
+  }
+  100%{
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+
+.swiper-slide-active .bounceInRight_4{
+	-webkit-animation:bounceInRight_4 0.75s;
+		animation:bounceInRight_4 0.75s;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+@-webkit-keyframes down_up_4{
+    0%{
+        -webkit-transform:translate3d(0,-10px,0);
+                transform:translate3d(0,-10px,0);
+    }
+    50%{
+        -webkit-transform:translate3d(0,0px,0);
+                transform:translate3d(0,0px,0);
+    }
+    100%{
+        -webkit-transform:translate3d(0,-10px,0);
+                transform:translate3d(0,-10px,0);
+    }
+}
+.swiper-slide-active .down_up_4{
+    -webkit-animation: down_up_4 2s linear infinite;
+            animation: down_up_4 2s linear infinite;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+/******** slide 4 end ***************/
+
+/******** slide 5 start ***************/
+.f5_5{
+	position: absolute;
+	top: 65%;
+	left: 15%;
+	width: 70%;
+	height: auto;
+	}
+@-webkit-keyframes fadeInUp_5{
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(0,100%,0);
+		transform:translate3d(0,100%,0);
+  }
+  100%{
+	opacity:1;
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+.swiper-slide-active .fadeInUp_5{
+	-webkit-animation:fadeInUp_5 1s ease-in-out;
+	   animation-name:fadeInUp_5 1s ease-in-out;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+@-webkit-keyframes lb_5{
+    0%{
+         opacity: 1;
+        -webkit-transform:translate3d(-200px,50px,0);
+                transform:translate3d(-200px,50px,0);
+    }
+    
+    100%{
+        opacity: 1;
+        -webkit-transform:translate3d(0,0,0);
+                transform:translate3d(0,0,0);
+    }
+}
+
+.swiper-slide-active .lb_5{
+    -webkit-animation:lb_5 1s linear;
+            animation:lb_5 1s linear;
+    -webkit-animation-fill-mode:both;
+            animation-fill-mode:both;
+}
+/******** slide 5 end ***************/
+
+/******** slide 6 start ***************/
+.zhuti_6{
+	position:absolute;
+	top:20%;
+	left:10%;
+	width:66%;
+	height:auto;
+}
+@-webkit-keyframes fadeInDown_6{
+  0%{
+	opacity:0;
+	-webkit-transform:translate3d(0,-100%,0);
+		transform:translate3d(0,-100%,0);
+  }
+  100%{
+	opacity:1;
+	-webkit-transform:none;
+		transform:none;
+  }
+}
+.swiper-slide-active .fadeInDown_6{
+	-webkit-animation:fadeInDown_6 1s ease-in-out;
+	   animation-name:fadeInDown_6 1s ease-in-out;
+	-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+}
+@-webkit-keyframes rb-lt_6{
+    0%{
+        -webkit-transform:translate3d(300px,300px,0);
+                transform:translate3d(300px,300px,0);
+    }
+    100%{
+        -webkit-transform:translate3d(0,0,0);
+                transform:translate3d(0,0,0);
+    }
+}
+
+.swiper-slide-active .rb-lt_6{
+    -webkit-animation:rb-lt_6 1s linear;
+            animation:rb-lt_6 1s linear;
+    -webkit-animation-fill-mode:both;
+            animation-fill-mode:both;
+}
+/******** slide 6 end ***************/

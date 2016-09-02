@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>canvas</title>
+</head>
+
+<body style="background:#333;"> 
+
+<canvas style="position:absolute;top:50%;left:50%;margin-top:-268px;margin-left:-215px;"/> 
+
+<script type="text/javascript">     
+(function(bodyStyle){         
+	bodyStyle.mozUserSelect = 'none';         
+	bodyStyle.webkitUserSelect = 'none';           
+	var img = new Image();         
+	var canvas = document.querySelector('canvas');         
+	canvas.style.backgroundColor='transparent';         
+	canvas.style.position = 'absolute';           
+	img.addEventListener('load',function(e){  
+		var ctx;
+		var w = img.width, h = img.height;    
+		//console.log(w); 
+		//console.log(h);        
+		var offsetX = canvas.offsetLeft, offsetY = canvas.offsetTop;             
+		var mousedown = false;               
+		function layer(ctx){                 
+			ctx.fillStyle = 'gray';                 
+			ctx.fillRect(0, 0, w, h);             
+		}   
+		function eventDown(e){                 
+			e.preventDefault();                 
+			mousedown=true;             
+		}   
+		function eventUp(e){                 
+			e.preventDefault();                 
+			mousedown=false;   
+			var data = ctx.getImageData(0,0,w,h).data;  
+			var pixels = data.length/4;
+			//console.log(data.length);
+			console.log(pixels);
+			var clearedPixels = 0;
+			for(var i = 0; i < data.length; i +=4){
+				//pixels ++;
+				if(data[i+3] == 0){//判断alpha是否为0，即是否是透明
+					clearedPixels ++;
+				}
+			}  
+			console.log(clearedPixels); 
+			if( clearedPixels/pixels >= 0.6 ) {
+				console.log(clearedPixels/pixels);
+				ctx.clearRect(0,0,w,h);
+			}			         
+		}               
+		function eventMove(e){                 
+			e.preventDefault();                 
+			if(mousedown){                     
+				if(e.changedTouches){                         
+					e=e.changedTouches[e.changedTouches.length-1];                     
+				}                     
+				var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,                         
+				y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;                     
+				with(ctx){                    
+					beginPath();                     
+					arc(x, y, 50, 0, Math.PI * 2); //绘制圆形   
+					/*** 
+					console.log(e.clientX); 
+					console.log(document.body.scrollLeft); 
+					console.log(e.pageX); 
+					console.log(offsetX); 
+					console.log(x); 	
+					console.log(e.clientY); 
+					console.log(document.body.scrollTop); 
+					console.log(e.pageY); 
+					console.log(offsetY); 				
+					console.log(y);      
+					****/   
+					closePath();         
+					fill();                     
+				}
+				               
+			}             
+		}               
+		canvas.width=w;             
+		canvas.height=h;             
+		canvas.style.backgroundImage='url('+img.src+')';             
+		ctx=canvas.getContext('2d');             
+		//ctx.fillStyle='transparent';             
+		//ctx.fillRect(0, 0, w, h);      
+		ctx.globalCompositeOperation = 'source-over';       
+		layer(ctx);               
+		ctx.globalCompositeOperation = 'destination-out';               
+		canvas.addEventListener('touchstart', eventDown);             
+		canvas.addEventListener('touchend', eventUp);             
+		canvas.addEventListener('touchmove', eventMove);             
+		canvas.addEventListener('mousedown', eventDown);             
+		canvas.addEventListener('mouseup', eventUp);             
+		canvas.addEventListener('mousemove', eventMove);   
+		
+	});
+	
+	img.src = 'gd.jpg';
+
+})(document.body.style);
+</script>
+	
+</body>
+</html> 
